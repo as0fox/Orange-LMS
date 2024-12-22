@@ -8,5 +8,4 @@
 </p>
 
 
-## Schema :
-https://dbdiagram.io/d/6739bd24e9daa85acab6cca3
+## Schema : https://dbdiagram.io/d/6739bd24e9daa85acab6cca3
