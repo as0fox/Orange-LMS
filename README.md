@@ -1,59 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orange LMS - {{ ucfirst($userType) }} Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
 
-        .login-bg {
-            background: linear-gradient(135deg, #000, #333, #666, #999, #000);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .input-group input {
-            padding-left: 40px;
-        }
-
-        .input-group .icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ff7900;
-        }
-
-        @keyframes upDownMotion {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .up-down-motion {
-            animation: upDownMotion 2s ease-in-out infinite;
-        }
-    </style>
-</head>
-<body class="login-bg min-h-screen flex items-center justify-center px-4 py-8">
     <div class="w-full max-w-md glass-card rounded-2xl overflow-hidden">
         <div class="p-8">
         <div class="text-center mb-8 ">
@@ -123,8 +68,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
 
 <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a>
 
