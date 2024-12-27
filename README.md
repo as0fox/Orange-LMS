@@ -1,6 +1,3 @@
-
-![images](https://github.com/user-attachments/assets/328ac658-cd90-4bc3-8207-f72e33f0d3e1)
-
 ![Screenshot_28-12-2024_0563_127 0 0 1](https://github.com/user-attachments/assets/f064b732-5eb6-4ba3-b406-fbd0835a1447)
 
 
