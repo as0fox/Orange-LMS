@@ -20,16 +20,27 @@ class LoginService
     {
         $guard = $this->guardResolver->getGuard($userType);
         $credentials = $request->only('email', 'password');
-
-        if (Auth::guard($guard)->attempt($credentials, $request->filled('remember'))) {
-            $request->session()->regenerate();
-            return redirect()->intended($this->guardResolver->getRedirectPath($userType));
+    
+        $user = Auth::guard($guard)->getProvider()->retrieveByCredentials($credentials);
+    
+        // Check if user exists and is active
+        if ($user && $user->active == 1) {
+            if (Auth::guard($guard)->attempt($credentials, $request->filled('remember'))) {
+                $request->session()->regenerate();
+                return redirect()->intended($this->guardResolver->getRedirectPath($userType));
+            }
+    
+            return back()->withErrors([
+                'email' => __('auth.failed'),
+            ]);
         }
-
+    
+        // If the user is not active
         return back()->withErrors([
-            'email' => __('auth.failed'),
+            'email' => __('Your account is not active. Please contact support.'),
         ]);
     }
+    
 
     public function logout(Request $request)
     {

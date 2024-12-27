@@ -26,7 +26,12 @@ $page='Profile';?>
             <div class="profile-stats">
                 <div class="stat-item">
                     <span class="stat-label">Academy</span>
+                    @if($user->type != 'admin')
                     <span class="stat-text">{{ $user->academy->name }}</span>
+                    @else
+                    <span class="stat-text">All Academy</span>
+
+                    @endif
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Status</span>
@@ -69,7 +74,12 @@ $page='Profile';?>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Academy:</span>
-                        <span class="info-value">{{ $user->academy->name }}</span>
+                        @if($user->type != 'admin')
+                    <span class="info-value">{{ $user->academy->name }}</span>
+                    @else
+                    <span class="info-value">All Academy</span>
+                    @endif
+              
                     </div>
                     <div class="info-item">
                         <span class="info-label">Type:</span>

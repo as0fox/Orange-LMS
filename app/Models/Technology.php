@@ -14,4 +14,14 @@ class Technology extends Model
     ];
 
   
+    public function technology()
+{
+    return $this->belongsTo(Technology::class);
+}
+
+public function items()
+{
+    return $this->hasMany(Item::class, 'techno_to_cohort_id');
+}
+
 }

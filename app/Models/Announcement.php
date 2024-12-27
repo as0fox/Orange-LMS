@@ -10,8 +10,13 @@ class Announcement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'title', 'content', 'cohort_id', 'created_by'];
-
+    protected $fillable = ['image', 'title', 'content', 'cohort_id', 'created_by', 'date'];
+   
+   
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+    
     public function cohort()
     {
         return $this->belongsTo(Cohort::class);

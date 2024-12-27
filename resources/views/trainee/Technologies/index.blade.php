@@ -2,9 +2,14 @@
 <?php
 $Ongoing = 0; 
 $DidntStart = 0;
+$finish = 0 ;
+foreach ($technoToCohorts as $technoToCohort) {
+    if( $technoToCohort->end_date <now() )
+    {
+      $finish++;
 
-foreach ($technologies as $technology) {
-    if ($technology->start_date <= now()) {
+    }
+    else if ($technoToCohort->start_date <= now()) {
         $Ongoing++;
     } else {
         $DidntStart++;
@@ -26,42 +31,62 @@ $page = 'technologies';
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="section-title"><i class="fas fa-laptop-code me-2"></i>Technologies</h2>
         <div class="d-flex gap-3">
-            <span class="status-badge status-completed">{{$Ongoing}} Ongoing</span>
-            <span class="status-badge status-in-progress">{{$DidntStart}} Upcoming</span>
+            <span class="status-badge status-completed">{{$finish}} Finished</span>
+            <span class="status-badge status-in-progress">{{$Ongoing}} Ongoing</span>
+            <span class="status-badge status-upcoming ">{{$DidntStart}} Upcoming</span>
         </div>
     </div>
 
-    <!-- Technology Grid -->
-    <div class="tech-grid">
-        <!-- HTML & CSS Card -->
-
-        @foreach ($technologies as $technology)
-        <div class="tech-card">
-            <div class="tech-icon" >
-                <i class="fab fa-{{ strtolower($technology->name)}}" style="@if ($technology->start_date <= now()) color: lightgreen; @endif"></i>
+   
+   <!-- Technology Grid -->
+<div class="tech-grid">
+    @foreach ($technoToCohorts as $technoToCohort)
+    <div 
+        class="tech-card" 
+        onclick="window.location.href='{{ route('technology.items', ['technology_id' => $technoToCohort->technology->id ,'user_id'=>$user->id]) }}'"
+        style="cursor: pointer;"
+    >
+        <div class="tech-icon">
+            <i class="fab fa-{{ strtolower($technoToCohort->technology->name) }}" 
+               style="@if ($technoToCohort->end_date < now()) 
+                        color: lightgreen; 
+                     @elseif ($technoToCohort->start_date <= now()) 
+                        color: var(--vibrant-orange); 
+                     @else 
+                        color: white;  
+                     @endif">
+            </i>
+        </div>
+        <div class="tech-content">
+            <h5 class="text-black">{{ $technoToCohort->technology->name }}</h5><br>
+            <p class="text-muted">{{ $technoToCohort->technology->description }}</p>
+            <div class="tech-progress">
+                <div class="progress-bar" 
+                     style="width: 100%; 
+                            @if ($technoToCohort->end_date < now()) 
+                                background-color: lightgreen; 
+                             @elseif ($technoToCohort->start_date <= now()) 
+                                background-color: var(--vibrant-orange); 
+                             @else 
+                                background-color: gray;  
+                             @endif">
+                </div>
             </div>
-            <div class="tech-content">
-                <h5 class="text-black">{{ $technology->name }}</h5>:]<br>
-                <p class="text-muted">{{ $technology->description }}</p>
-                <div class="tech-progress">
-                    <div class="progress-bar" style="width: 100% ; @if ($technology->start_date <= now()) background-color: lightgreen; @endif"></div>
-
-                </div>
-                <div class="tech-stats">
-                    @if ($technology->start_date <= now())
-                     <span class="status-badge status-completed">Ongoing</span>
-                        @else
-                        <span class="status-badge status-in-progress">Upcoming</span>
-                        @endif
-
-                </div>
+            <div class="tech-stats">
+                @if ($technoToCohort->end_date < now())
+                    <span class="status-badge status-completed">Finished</span>
+                @elseif ($technoToCohort->start_date <= now())
+                    <span class="status-badge status-in-progress">Ongoing</span>
+                @else
+                    <span class="status-badge status-upcoming">Upcoming</span>
+                @endif
             </div>
         </div>
-        @endforeach
-
     </div>
+    @endforeach
+</div>
 
-    <!-- Learning Resources Section -->
+    <!-- Learning Resources Section
     <div class="resource-section">
         <h3 class="mb-4"><i class="fas fa-book-reader me-2"></i>Learning Resources</h3>
 
@@ -92,7 +117,7 @@ $page = 'technologies';
             <span class="status-badge status-upcoming">Upcoming</span>
         </div>
     </div>
-</div>
+</div> -->
 </main>
 
 <script>

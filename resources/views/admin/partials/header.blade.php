@@ -45,9 +45,10 @@
     .dropdown .nav-link {
         color: var(--orange-primary);
     }
+
     .bg-orange {
-    background-color: #ff7600;
-}
+        background-color: #ff7600;
+    }
 
 
     .sidebar {
@@ -156,364 +157,500 @@
         opacity: 0.05;
         transform: rotate(-15deg);
     }
+
     .profile-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    animation: fadeIn 0.5s ease;
-}
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        animation: fadeIn 0.5s ease;
+    }
 
-.profile-header {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    animation: slideUp 0.5s ease;
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-}
-
-.profile-image-wrapper {
-    flex: 0 0 200px;
-}
-
-.profile-image-container {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    cursor: pointer;
-}
-
-.profile-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: all 0.3s ease;
-    border: 5px solid #fff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-.profile-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.profile-image-overlay i {
-    color: white;
-    font-size: 24px;
-}
-
-.profile-image-container:hover .profile-image-overlay {
-    opacity: 1;
-}
-
-.profile-image-container:hover .profile-image {
-    transform: scale(1.02);
-}
-
-.profile-info {
-    flex: 1;
-}
-
-.profile-name-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.profile-name-section h1 {
-    font-size: 32px;
-    margin: 0;
-    font-weight: 600;
-    color: #333;
-}
-
-.edit-profile-btn {
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: none;
-    background: #ff7900;
-    color: white;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.edit-profile-btn:hover {
-    background: #e66d00;
-    transform: translateY(-2px);
-}
-
-.settings-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ff7600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.settings-icon:hover {
-    background: #e9ecef;
-    transform: rotate(90deg);
-}
-
-.profile-stats {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 25px;
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.stat-label {
-    font-size: 14px;
-    color: #666;
-}
-
-.stat-text {
-    font-weight: 600;
-    color: #333;
-}
-
-.profile-details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #555;
-}
-
-.detail-item i {
-    color: #ff7900;
-    width: 20px;
-}
-
-.info-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-    animation: slideUp 0.5s ease 0.2s both;
-}
-
-.info-card {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.card-title {
-    
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.card-title i {
-    color: #ff7900;
-}
-
-.info-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.info-item:last-child {
-    border-bottom: none;
-}
-
-.info-label {
-    color: #666;
-}
-
-.info-value {
-    font-weight: 500;
-    color: #333;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
     .profile-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        display: flex;
+        gap: 40px;
+        margin-bottom: 40px;
+        animation: slideUp 0.5s ease;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     }
 
     .profile-image-wrapper {
-        flex: 0 0 auto;
+        flex: 0 0 200px;
+    }
+
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: all 0.3s ease;
+        border: 5px solid #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .profile-image-overlay i {
+        color: white;
+        font-size: 24px;
+    }
+
+    .profile-image-container:hover .profile-image-overlay {
+        opacity: 1;
+    }
+
+    .profile-image-container:hover .profile-image {
+        transform: scale(1.02);
+    }
+
+    .profile-info {
+        flex: 1;
     }
 
     .profile-name-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .profile-name-section h1 {
+        font-size: 32px;
+        margin: 0;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .edit-profile-btn {
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: none;
+        background: #ff7900;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .edit-profile-btn:hover {
+        background: #e66d00;
+        transform: translateY(-2px);
+    }
+
+    .settings-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
         justify-content: center;
+        background: #ff7600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .settings-icon:hover {
+        background: #e9ecef;
+        transform: rotate(90deg);
     }
 
     .profile-stats {
-        justify-content: center;
+        display: flex;
+        gap: 30px;
+        margin-bottom: 25px;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .stat-text {
+        font-weight: 600;
+        color: #333;
     }
 
     .profile-details {
-        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
-}
 
-/* Modern Badge Styles */
-.status-badge {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #555;
+    }
 
-.status-badge-pending {
-    background: linear-gradient(45deg, #ffd700, #ffa500);
-    color: #000;
-}
+    .detail-item i {
+        color: #ff7900;
+        width: 20px;
+    }
 
-.status-badge-approved {
-    background: linear-gradient(45deg, #00b09b, #96c93d);
-    color: #fff;
-}
+    .info-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+        animation: slideUp 0.5s ease 0.2s both;
+    }
 
-.status-badge-rejected {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: #fff;
-}
+    .info-card {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
 
-.absence-type-badge {
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.85rem;
-    background: #f8f9fa;
-    border: 2px solid;
-}
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
 
-.absence-type-excused {
-    border-color: #0ea5e9;
-    color: #0ea5e9;
-}
+    .card-title {
 
-.absence-type-unexcused {
-    border-color: #dc2626;
-    color: #dc2626;
-}
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.absence-type-delay {
-    border-color: #f59e0b;
-    color: #f59e0b;
-}
+    .card-title i {
+        color: #ff7900;
+    }
 
-/* Export Button Styles */
-.export-btn {
-    padding: 8px 16px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-right: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
 
-.export-btn:hover {
+    .info-item:last-child {
+        border-bottom: none;
+    }
 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-}
+    .info-label {
+        color: #666;
+    }
 
-.export-btn-copy {
-    background: #ff7900;
-    color: black;
-    font-weight: bold;
-}
+    .info-value {
+        font-weight: 500;
+        color: #333;
+    }
 
-.export-btn-excel {
-    background: #ff7900;
-    color: black;
-    font-weight: bold;
-}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
 
-.export-btn-pdf {
-    background: #ff7900;
-    color: black;
-    font-weight: bold;
-}
+        to {
+            opacity: 1;
+        }
+    }
 
-.export-btn-print {
-    background: #ff7900;
-    color: black;
-    font-weight: bold;
-}
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
 
-.export-btn i {
-    font-size: 1rem;
-}
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-/* Container for export buttons */
-.export-buttons-wrapper {
-  
-    padding: 1rem;
-    background: black;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .profile-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-image-wrapper {
+            flex: 0 0 auto;
+        }
+
+        .profile-name-section {
+            justify-content: center;
+        }
+
+        .profile-stats {
+            justify-content: center;
+        }
+
+        .profile-details {
+            align-items: center;
+        }
+    }
+
+    /* Modern Badge Styles */
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .status-badge-pending {
+        background: linear-gradient(45deg, #ffd700, #ffa500);
+        color: #000;
+    }
+
+    .status-badge-approved {
+        background: linear-gradient(45deg, #00b09b, #96c93d);
+        color: #fff;
+    }
+
+    .status-badge-rejected {
+        background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        color: #fff;
+    }
+
+    .absence-type-badge {
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        background: #f8f9fa;
+        border: 2px solid;
+    }
+
+    .absence-type-excused {
+        border-color: #0ea5e9;
+        color: #0ea5e9;
+    }
+
+    .absence-type-unexcused {
+        border-color: #dc2626;
+        color: #dc2626;
+    }
+
+    .absence-type-delay {
+        border-color: #f59e0b;
+        color: #f59e0b;
+    }
+
+    /* Export Button Styles */
+    .export-btn {
+        padding: 8px 16px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .export-btn:hover {
+
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .export-btn-copy {
+        background: #ff7900;
+        color: black;
+        font-weight: bold;
+    }
+
+    .export-btn-excel {
+        background: #ff7900;
+        color: black;
+        font-weight: bold;
+    }
+
+    .export-btn-pdf {
+        background: #ff7900;
+        color: black;
+        font-weight: bold;
+    }
+
+    .export-btn-print {
+        background: #ff7900;
+        color: black;
+        font-weight: bold;
+    }
+
+    .export-btn i {
+        font-size: 1rem;
+    }
+
+    /* Container for export buttons */
+    .export-buttons-wrapper {
+
+        padding: 1rem;
+        background: black;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    :root {
+            --boost-orange: #FF5D19;
+            --boost-orange-light: #FF8C19;
+            --boost-orange-dark: #e54d0e;
+        }
+
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: all 0.5s ease-out;
+        }
+
+        .loader {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .loader-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid var(--boost-orange);
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .loader-ring:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+            border-top: 4px solid var(--boost-orange-light);
+            animation-delay: 0.2s;
+        }
+
+        .loader-ring:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            left: 20%;
+            top: 20%;
+            border-top: 4px solid var(--boost-orange-dark);
+            animation-delay: 0.4s;
+        }
+
+        .loading-text {
+            margin-top: 2rem;
+            color: var(--boost-orange);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out forwards 0.3s;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: #f3f3f3;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            background: var(--boost-orange);
+            animation: progress 2s ease-out forwards;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
 <body>
-
+<div class="loader-container">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+        </div>
+        <div class="loading-text">Loading...</div>
+        <div class="progress-bar"></div>
+    </div>
     <!-- Sidebar -->
     <aside class="sidebar bg-black">
         <div class="p-3 border-bottom">
@@ -526,7 +663,7 @@
                 <span class="h4 mb-0 text-orange-primary">Admin panel</span>
             </div>
         </div>
-@if($user->type == "admin")
+        @if($user->type == "admin")
         <!-- Navigation -->
         <nav class="mt-2">
             <ul class="nav flex-column">
@@ -558,7 +695,7 @@
                         <i class="fas fa-chalkboard-teacher me-2"></i> Trainers
                     </a>
                 </li>
-             
+
                 <li class="nav-item">
                     <a class="nav-link {{ $trainees_active ?? '' }}" href="{{route('admin.trainees')}}">
                         <i class="fas fa-user-graduate me-2"></i> Trainees
@@ -582,12 +719,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?= $items_active ?? '' ?>" href="{{route('items.index')}}">
+                        <i class="fas fa-laptop-code me-2"></i> Technologies items
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?= $assignments_active ?? '' ?>" href="{{route('assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>" href="{{route('admin.submitted-assignments.index')}}">
+                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>"
+                        href="{{route('admin.submitted-assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments Submitted
                     </a>
                 </li>
@@ -617,7 +760,7 @@
         <!-- Navigation -->
         <nav class="mt-2">
             <ul class="nav flex-column">
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link <?= $dashboard_active ?? '' ?>" href="{{route('admin.dashboard')}}">
                         <i class="fas fa-tachometer-alt me-2"></i> Dashboard
                     </a>
@@ -639,12 +782,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?= $items_active ?? '' ?>" href="{{route('items.index')}}">
+                        <i class="fas fa-laptop-code me-2"></i> Technologies items
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?= $assignments_active ?? '' ?>" href="{{route('assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>" href="{{route('admin.submitted-assignments.index')}}">
+                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>"
+                        href="{{route('admin.submitted-assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments Submitted
                     </a>
                 </li>
@@ -681,7 +830,7 @@
                         <i class="fas fa-chalkboard-teacher me-2"></i> Trainers
                     </a>
                 </li>
-             
+
                 <li class="nav-item">
                     <a class="nav-link {{ $trainees_active ?? '' }}" href="{{route('admin.trainees')}}">
                         <i class="fas fa-user-graduate me-2"></i> Trainees
@@ -705,12 +854,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?= $items_active ?? '' ?>" href="{{route('items.index')}}">
+                        <i class="fas fa-laptop-code me-2"></i> Technologies items
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?= $assignments_active ?? '' ?>" href="{{route('assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>" href="{{route('admin.submitted-assignments.index')}}">
+                    <a class="nav-link <?= $submitted_assignments_active ?? '' ?>"
+                        href="{{route('admin.submitted-assignments.index')}}">
                         <i class="fas fa-tasks me-2"></i> Assignments Submitted
                     </a>
                 </li>
@@ -795,7 +950,8 @@
                             @endif
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-black" href="{{ route('profile.index') }}"> @if($user->image)
+                            <li><a class="dropdown-item text-black" href="{{ route('profile.index') }}">
+                                    @if($user->image)
                                     <img src="{{ asset('assets/' . $user->image) }}" width="20" height="20"
                                         class="rounded-circle" alt="" />
                                     @else

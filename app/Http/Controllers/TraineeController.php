@@ -40,14 +40,18 @@ class TraineeController extends Controller
         $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:trainees,email',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|string|min:8',
             'address' => 'nullable|string|max:100',
             'phone' => 'nullable|string|max:15',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'cohort_id' => 'nullable|exists:cohorts,id',
-            'academy_id' => 'nullable|exists:academies,id', // Validate academy_id
+            'academy_id' => 'nullable|exists:academies,id',
+            'gender' => 'nullable|string|in:male,female',
+            'birthday' => 'nullable|date',
+            'specialization' => 'nullable|string|max:255',
+            'type' => 'nullable|string|max:255', // Validate type field
         ]);
-
+    
         $imagePath = null;
         if ($request->hasFile('image')) {
             $originalFileName = $request->file('image')->getClientOriginalName();
@@ -55,21 +59,24 @@ class TraineeController extends Controller
             $imagePath = $request->file('image')->move(public_path('assets/trainees'), $uniqueFileName);
             $imagePath = 'trainees/' . $uniqueFileName;
         }
-
+    
         Trainee::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Encrypt password
+            'password' => bcrypt($request->password),
             'address' => $request->address,
             'phone' => $request->phone,
             'image' => $imagePath,
             'cohort_id' => $request->cohort_id,
-            'academy_id' => $request->academy_id, // Store academy_id
+            'academy_id' => $request->academy_id,
+            'gender' => $request->gender,
+            'birthday' => $request->birthday,
+            'specialization' => $request->specialization,
+            'type' => $request->type ?? 'trainee', // Default to 'trainee'
         ]);
-
+    
         return redirect()->route('admin.trainees')->with('success', 'Trainee created successfully!');
     }
-
     public function updateTrainee(Request $request, $id)
 {
     $trainee = Trainee::findOrFail($id);
@@ -82,7 +89,11 @@ class TraineeController extends Controller
         'phone' => 'nullable|string|max:15',
         'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         'cohort_id' => 'nullable|exists:cohorts,id',
-        'academy_id' => 'nullable|exists:academies,id', // Validate academy_id
+        'academy_id' => 'nullable|exists:academies,id',
+        'gender' => 'nullable|string|in:male,female',
+        'birthday' => 'nullable|date',
+        'specialization' => 'nullable|string|max:255',
+        'type' => 'nullable|string|max:255',
     ]);
 
     // Handle Image Upload
@@ -107,10 +118,13 @@ class TraineeController extends Controller
         unset($validated['password']);
     }
 
-    $trainee->update($validated);
+    $trainee->update(array_merge($validated, [
+        'type' => $request->type ?? $trainee->type,
+    ]));
 
     return redirect()->route('admin.trainees')->with('success', 'Trainee updated successfully.');
 }
+
 
 
     public function deleteTrainee($id)

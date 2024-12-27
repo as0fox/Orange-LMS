@@ -19,6 +19,15 @@
 </head>
 
 <body>
+<div class="loader-container">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+        </div>
+        <div class="loading-text">Loading...</div>
+        <div class="progress-bar2"></div>
+    </div>
     <!-- Mobile Header -->
     <div class="mobile-header">
         <div class="d-flex align-items-center">

@@ -30,7 +30,7 @@ $page='Technologies';?>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Start Date</th>
+               
                 <th>Actions</th>
             </tr>
             </thead>
@@ -47,7 +47,7 @@ $page='Technologies';?>
                     </td>
                     <td>{{ $technology->name }}</td>
                     <td>{{ $technology->description }}</td>
-                    <td>{{ $technology->start_date }}</td>
+              
                     <td>
                         <!-- Edit Button -->
                         <button
@@ -106,10 +106,7 @@ $page='Technologies';?>
                             <label for="image" class="form-label">Image</label>
                             <input type="file" name="image" id="image" class="form-control" accept="image/*" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="start_date" class="form-label">Start Date</label>
-                            <input type="date" name="start_date" id="start_date" class="form-control" required>
-                        </div>
+                     
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -149,10 +146,7 @@ $page='Technologies';?>
                                 <label for="image{{ $technology->id }}" class="form-label">Image</label>
                                 <input type="file" name="image" id="image{{ $technology->id }}" class="form-control" accept="image/*">
                             </div>
-                            <div class="mb-3">
-                                <label for="start_date{{ $technology->id }}" class="form-label">Start Date</label>
-                                <input type="date" name="start_date" id="start_date{{ $technology->id }}" class="form-control" value="{{ $technology->start_date }}" required>
-                            </div>
+                           
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -199,7 +193,7 @@ $page='Technologies';?>
                 { orderable: false },  // Image
                 { type: 'string' },   // Name
                 { type: 'string' },   // Description
-                { type: 'date' },     // Start Date
+              
                 { orderable: false }  // Actions
             ]
         });

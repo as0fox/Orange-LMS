@@ -17,10 +17,16 @@ return new class extends Migration
             $table->id(); // Auto-increment primary key
             $table->unsignedBigInteger('technology_id'); // Foreign key to technologies table
             $table->unsignedBigInteger('cohort_id'); // Foreign key to cohorts table
+            $table->date('start_date')->nullable(); // New start_date column
+            $table->date('end_date')->nullable(); // New end_date column
             $table->timestamps(); // Created_at and updated_at columns
 
             $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('cascade');
             $table->foreign('cohort_id')->references('id')->on('cohorts')->onDelete('cascade');
+        });
+
+        Schema::table('technologies', function (Blueprint $table) {
+            $table->date('start_date')->nullable()->change(); // Update start_date column to allow NULL values
         });
     }
 
@@ -31,6 +37,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('technologies', function (Blueprint $table) {
+            $table->date('start_date')->nullable(false)->change(); // Revert start_date column to not allow NULL values
+        });
+
         Schema::dropIfExists('techno_to_cohorts');
     }
 };

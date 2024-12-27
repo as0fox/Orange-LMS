@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Academy;
 use App\Models\Cohort;
+use App\Models\Trainee; // Ensure this points to the Trainee model
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 use Illuminate\Validation\Rules\Password;
 
 class StudentProfileController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $user = Auth::user(); // Make sure you're using the correct guard for Trainee
         $academies = Academy::all();
         $cohorts = Cohort::where('academy_id', $user->academy_id)->get();
         
@@ -29,19 +27,21 @@ class StudentProfileController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $request->user()->id],
+            'email' => ['required', 'email', 'max:255', 'unique:trainees,email,' . $request->user()->id],
             'phone' => ['required', 'string', 'max:20'],
             'address' => ['required', 'string', 'max:255'],
-            'cohort_id' => ['required', 'exists:cohorts,id'],
-            'academy_id' => ['required', 'exists:academies,id'],
+            
+            'gender' => ['nullable', 'string'],
+            'birthday' => ['nullable', 'date'],
+            'specialization' => ['nullable', 'string'],
         ]);
 
-        $user = $request->user();
+        $trainee = $request->user();
         
-        $user->fill($validated);
-        $user->save();
+        $trainee->fill($validated);
+        $trainee->save();
 
-        return Redirect::route('profile.index')->with('status', 'profile-updated');
+        return Redirect::route('studentProfile.index')->with('status', 'profile-updated');
     }
 
     public function updateImage(Request $request): RedirectResponse
@@ -50,23 +50,23 @@ class StudentProfileController extends Controller
             'image' => ['required', 'image', 'max:2048'], // 2MB Max
         ]);
     
-        $user = $request->user();
+        $trainee = $request->user();
     
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($user->image && file_exists(public_path('assets/' . $user->image))) {
-                unlink(public_path('assets/' . $user->image));
+            if ($trainee->image && file_exists(public_path('assets/' . $trainee->image))) {
+                unlink(public_path('assets/' . $trainee->image));
             }
     
             $originalFileName = $request->file('image')->getClientOriginalName();
             $uniqueFileName = uniqid() . '_' . $originalFileName;
             $request->file('image')->move(public_path('assets/trainees'), $uniqueFileName);
     
-            $user->image = 'trainees/' . $uniqueFileName;
-            $user->save();
+            $trainee->image = 'trainees/' . $uniqueFileName;
+            $trainee->save();
         }
     
-        return Redirect::route('profile.index')->with('status', 'profile-image-updated');
+        return Redirect::route('studentProfile.index')->with('status', 'profile-image-updated');
     }
 
     public function updatePassword(Request $request): RedirectResponse
@@ -80,7 +80,7 @@ class StudentProfileController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return Redirect::route('profile.index')->with('status', 'password-updated');
+        return Redirect::route('studentProfile.index')->with('status', 'password-updated');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -89,14 +89,14 @@ class StudentProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user = $request->user();
+        $trainee = $request->user();
 
-        if ($user->image && Storage::disk('public')->exists('assets/' . $user->image)) {
-            Storage::disk('public')->delete('assets/' . $user->image);
+        if ($trainee->image && file_exists(public_path('assets/' . $trainee->image))) {
+            unlink(public_path('assets/' . $trainee->image));
         }
 
-        Auth::logout();
-        $user->delete();
+        Auth::guard('trainee')->logout();
+        $trainee->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

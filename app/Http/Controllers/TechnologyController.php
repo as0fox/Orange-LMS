@@ -27,7 +27,7 @@ class TechnologyController extends Controller
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:255',
             'image' => 'required|image|max:2048', // Optional size limit (2MB)
-            'start_date' => 'required|date',
+         
           
         ]);
 
@@ -42,7 +42,7 @@ class TechnologyController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'image' => $path,
-            'start_date' => $request->start_date,
+         
            
         ]);
 

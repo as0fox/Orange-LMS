@@ -15,6 +15,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->boolean('is_active')->default(true);
+            $table->dateTime('date');
             $table->foreignId('cohort_id')->constrained()->onDelete('cascade');
             $table->string('created_by');
             $table->timestamps();

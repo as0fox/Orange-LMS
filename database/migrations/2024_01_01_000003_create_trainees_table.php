@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->foreignId('cohort_id')->constrained();
             $table->foreignId('academy_id')->constrained();
+            $table->string('gender')->nullable()->after('type');
+            $table->date('birthday')->nullable()->after('gender');
+            $table->string('specialization')->nullable()->after('birthday');
             $table->boolean('active')->default(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

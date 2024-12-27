@@ -17,7 +17,7 @@ use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\SubmittedAssignmentsController;
 use App\Http\Controllers\AbsenceRuleController;
 use App\Http\Controllers\AnnouncementController;
-
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\TraineeController\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -106,17 +106,26 @@ Route::prefix('admin')->middleware(['auth:web,manager'])->group(function () {
 
 });
 Route::prefix('admin')->middleware(['auth:web,trainer,manager'])->group(function () {
+    // Display and assign technologies to cohorts
     Route::get('/techno_to_cohort', [TechnoToCohortController::class, 'index'])->name('techno_to_cohort.index');
     Route::post('/techno_to_cohort', [TechnoToCohortController::class, 'store'])->name('techno_to_cohort.store');
-    Route::get('/get-cohorts/{academy}', [TechnoToCohortController::class, 'getCohorts']);
     
+    // Update route for updating start and end dates
+    Route::put('/techno_to_cohort/update/{id}', [TechnoToCohortController::class, 'update'])->name('techno_to_cohort.update');
+    
+    // AJAX route for fetching cohorts
+    Route::get('/get-cohorts/{academy}', [TechnoToCohortController::class, 'getCohorts']);
+
+    // Other resource routes
     Route::resource('assignments', AssignmentController::class);
     Route::resource('technologies', TechnologyController::class);
-  
- 
 
+
+Route::resource('items', ItemController::class);
+Route::post('items/{item}/toggle-active', [ItemController::class, 'toggleActive'])->name('items.toggle-active');
 
 });
+
 
 
 

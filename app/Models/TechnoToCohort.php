@@ -10,7 +10,7 @@ class TechnoToCohort extends Model
 
     use HasFactory;
 
-    protected $fillable = ['cohort_id', 'technology_id'];
+    protected $fillable = ['cohort_id', 'technology_id', 'start_date', 'end_date']; 
 
     public function cohort()
     {
@@ -21,4 +21,22 @@ class TechnoToCohort extends Model
     {
         return $this->belongsTo(Technology::class);
     }
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'techno_to_cohort_id');
+    }
+
+    public function academy()
+{
+    return $this->belongsTo(Academy::class);
+}
+
+public function technoToCohort()
+{
+    return $this->belongsTo(TechnoToCohort::class, 'techno_to_cohort_id');
+}
+
+
+
+
 }

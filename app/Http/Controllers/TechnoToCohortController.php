@@ -8,6 +8,7 @@ use App\Models\Technology;
 use App\Models\TechnoToCohort;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class TechnoToCohortController extends Controller
 {
     public function index(Request $request)
@@ -16,10 +17,10 @@ class TechnoToCohortController extends Controller
         $isAdmin = $user->type === 'admin';
         $hasAcademyAccess = in_array($user->type, ['manager', 'trainer', 'job_coach']); // Generalized role check
         $academyId = $user->academy_id;
-    
+
         // Fetch academies based on user role
         $academies = $isAdmin ? Academy::all() : ($hasAcademyAccess ? Academy::where('id', $academyId)->get() : []);
-    
+
         // Fetch cohorts based on user role and selected academy
         $cohorts = Cohort::when($request->academy_id, function ($query) use ($request) {
             return $query->where('academy_id', $request->academy_id);
@@ -29,32 +30,36 @@ class TechnoToCohortController extends Controller
                 $query->where('academy_id', $academyId);
             }
         })->get();
-    
+
         // Fetch technologies
         $technologies = Technology::all();
-    
+
         // Selected academy and cohort IDs
         $selectedAcademyId = $request->academy_id;
         $selectedCohortId = $request->cohort_id;
-    
+
         // Fetch already assigned technologies for the selected cohort
-        $selectedTechnologies = collect();
+        $selectedTechnologies = collect(); // Initialize empty collection
         if ($selectedCohortId) {
             $selectedTechnologies = TechnoToCohort::where('cohort_id', $selectedCohortId)
-                ->pluck('technology_id');
+                ->pluck('technology_id'); // Get only technology IDs
         }
-    
+
+        // Fetch all assigned technologies if admin
+        $technoToCohorts = $isAdmin ? TechnoToCohort::with('technology')->get() : 
+            TechnoToCohort::where('cohort_id', $selectedCohortId)->with('technology')->get();
+
         return view('admin.techno_to_cohort.index', [
             'academies' => $academies,
             'cohorts' => $cohorts,
             'technologies' => $technologies,
             'selectedTechnologies' => $selectedTechnologies,
+            'technoToCohorts' => $technoToCohorts,
             'selectedAcademyId' => $selectedAcademyId,
             'selectedCohortId' => $selectedCohortId,
             'user' => $user,
         ]);
     }
-    
 
     public function store(Request $request)
     {
@@ -86,5 +91,24 @@ class TechnoToCohortController extends Controller
     {
         $cohorts = Cohort::where('academy_id', $academyId)->get();
         return response()->json($cohorts);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $technoToCohort = TechnoToCohort::findOrFail($id);
+
+        $technoToCohort->start_date = $request->start_date;
+        $technoToCohort->end_date = $request->end_date;
+        $technoToCohort->save();
+
+        return redirect()->route('techno_to_cohort.index', [
+            'academy_id' => $request->academy_id,
+            'cohort_id' => $technoToCohort->cohort_id,
+        ])->with('success', 'Dates updated successfully.');
     }
 }

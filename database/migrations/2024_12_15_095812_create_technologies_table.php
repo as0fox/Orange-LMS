@@ -13,7 +13,7 @@ class CreateTechnologiesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image');
-            $table->date('start_date');
+            $table->date('start_date')->nullable();;
             $table->boolean('active')->default(true);
             $table->boolean('isDeleted')->default(false);
             $table->timestamps();

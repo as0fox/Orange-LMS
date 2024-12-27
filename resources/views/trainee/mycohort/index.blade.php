@@ -37,23 +37,37 @@ $page="Cohort ";
     <div class="road"></div>
     <div class="training-milestones">
 
-        @foreach($technologies as $technology)
-        <div class="milestone">
-            <div class="{{ $technology->start_date <= now() ? 'milestone-marker_start' : 'milestone-marker' }}">
-                {{ $loop->iteration }}
-            </div>
-            <div class="{{ $technology->start_date <= now() ? 'milestone-content_start' : 'milestone-content' }}">
-                <h6>{{ $technology->name }}</h6>
-                <p>{{ $technology->description }}</p>
-            </div>
+    @foreach($technoToCohorts as $technoToCohort)
+    <div class="milestone">
+        @php
+          
+            if ($technoToCohort->end_date < now()) {
+                $markerClass = 'milestone-marker_finish';
+                $contentClass = 'milestone-content_finish';
+            } elseif ($technoToCohort->start_date <= now()) {
+                $markerClass = 'milestone-marker_start';
+                $contentClass = 'milestone-content_start';
+            } else {
+                $markerClass = 'milestone-marker';
+                $contentClass = 'milestone-content';
+            }
+        @endphp
+
+        <div class="{{ $markerClass }}">
+            {{ $loop->iteration }}
         </div>
-        @endforeach
+        <div class="{{ $contentClass }}">
+            <h6>{{ $technoToCohort->technology->name }}</h6>
+            <p>{{ $technoToCohort->technology->description }}</p>
+        </div>
+    </div>
+@endforeach
+
 
     </div>
 </div>
 <br> <br>
 <!-- Trainers Section -->
- 
 <h2 class="section-title text-center mb-4"><i class="fas fa-users-cog me-2"></i>Team</h2>
 <div class="row g-4">
     <div class="col-md-4">
@@ -140,6 +154,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-</body>
-
-</html>
+@include('trainee.partials.footer')
