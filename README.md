@@ -1,10 +1,9 @@
-
-# Orange LMS - Detailed System Documentation
+# <span style="color: #FF8C19;">Orange LMS - Detailed System Documentation </span>
 
 ## Project Overview
 Orange LMS is a specialized platform designed for Orange Coding Academy students. The platform encompasses all Orange academies and provides comprehensive learning management capabilities.
 
-## Home Page
+## <span style="color: #FF8C19;">Home Page</span>
 The website features a main page that displays:
 - Technologies taught across all academies
 - Academy images
@@ -12,7 +11,7 @@ The website features a main page that displays:
 - Contact Us information
 - Call-to-action button ("Start Your Journey") leading to student login page
 
-## Authentication System
+## <span style="color: #FF8C19;">Authentication System</span>
 
 ### Login System Implementation
 The system utilizes Laravel Guards with five distinct user types:
@@ -28,7 +27,7 @@ The system utilizes Laravel Guards with five distinct user types:
    - Automatically sends usertype=trainee parameter
 
 2. **Staff Access**
-   - Route: admin/login/
+   - Route: /admin/login
    - Displays 4 buttons for user type selection:
      - Admin
      - Manager
@@ -41,8 +40,7 @@ The usertype parameter determines:
 - Navigation menu content based on default type
 - Data display filtered by Auth::user->academy_id
 
-## Admin Dashboard Capabilities
-
+## <span style="color: #FF8C19;">Admin Dashboard Capabilities</span>
 ### 1. Dashboard
 - Displays all academies
 - Shows notifications
@@ -127,10 +125,10 @@ The usertype parameter determines:
 - Shows creator name
 - Edit/delete/deactivate options
 
-## Manager Access
+## <span style="color: #FF8C19;">Manager Access</span>
 - Same permissions as admin but limited to assigned academy
 
-## Trainer Access
+## <span style="color: #FF8C19;">Trainer Access</span>
 Limited access to:
 - Dashboard
 - Trainees
@@ -142,14 +140,14 @@ Limited access to:
 - Absences
 - Announcements
 
-## Job Coach Access
+## <span style="color: #FF8C19;">Job Coach Access</span>
 Limited to:
 - Dashboard
 - Absence rules
 - Absences
 - Announcements
 
-## Trainee Dashboard
+## <span style="color: #FF8C19;">Trainee Dashboard</span>
 
 ### 1. Dashboard
 - Training start date
@@ -162,14 +160,14 @@ Limited to:
 - Cohort name
 - Start/end dates
 - Roadmap visualization:
-  - Green: Completed technology
-  - Orange: Current technology
-  - Gray: Future technology
+  - <span style="color: green;">Green: Completed technology</span>
+  - <span style="color: #FF8C19;">Orange: Current technology</span>
+  - <span style="color: gray;">Gray: Future technology</span>
 - Academy staff listing (managers/trainers/job coaches)
 
 ### 3. Technologies
 - Display cohort technologies
-- Color-coded status (green/orange/gray)
+- Color-coded status (<span style="color: green;">green</span>/<span style="color: #FF8C19;">orange</span>/<span style="color: gray;">gray</span>)
 - Access to technology items
 
 ### 4. Assignments
@@ -191,21 +189,21 @@ Limited to:
 ### 7. Logout
 - Secure session termination
 
-## Technical Stack
+## <span style="color: #FF8C19;">Technical Stack</span>
 - Frontend: HTML, CSS, JavaScript
 - Framework: Boosted Orange
 - Backend: Laravel PHP
 - Database: MySQL
 - Additional: DataTables jQuery
 
-## System Components
+## <span style="color: #FF8C19;">System Components</span>
 1. Home page
 2. Login page
 3. Admin dashboard
 4. Trainee dashboard
 5. Loading section
 
-## Database Schema
+## <span style="color: #FF8C19;">Database Schema</span>
 
 ### Core Tables
 1. **Academies**
@@ -228,7 +226,7 @@ Limited to:
    - Role-specific data
    - Authentication details
 
-### Relationship Structure
+### <span style="color: #FF8C19;">Relationship Structure</span>
 
 #### Academy Relationships
 - One-to-Many with Cohorts
@@ -261,7 +259,7 @@ Limited to:
 - Robust relationship management
 - Activity tracking and status management
 
-## Security Features
+## <span style="color: #FF8C19;">Security Features</span>
 - Password hashing
 - Remember tokens
 - Email verification
@@ -270,8 +268,18 @@ Limited to:
 - Session management
 
 
+# <span style="color: #FF8C19;">How to start using the Orange LMS platform:</span>
+1. clone the repository from github
+2. run composer install to install all the dependencies
+3. php artisan breeze:install to install the authentication system
+4. run php artisan migrate to create all the tables in the database
+5. run php artisan serve to start the server
+6. open the browser and go to http://localhost:8000 to see the platform in action
+7. you can login as a admin, manager, trainer, job coach or trainee to see the different features of the platform based on your role
+8. you can display Admin, Manager, Trainer, Job Coach Login by this link http://localhost:8000/admin/login
+### <span style="color: #FF8C19;">This documentation reflects the exact system structure and functionality as implemented in the Orange LMS platform.</span>
 
-## This documentation reflects the exact system structure and functionality as implemented in the Orange LMS platform.
+<span style="color: #FF8C19;">This system was designed and documented by the student Ahmad Alfararjeh.</span>
 
 ![Orange LMS](https://github.com/user-attachments/assets/14512821-fa45-4c8a-a403-9a5b16dfe872)
 
