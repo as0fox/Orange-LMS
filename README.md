@@ -281,6 +281,8 @@ Limited to:
 
 <span style="color: #FF8C19;">This system was designed and documented by the student Ahmad Alfararjeh.</span>
 
+
+
 ![Orange LMS](https://github.com/user-attachments/assets/14512821-fa45-4c8a-a403-9a5b16dfe872)
 
 ## Schema : https://dbdiagram.io/d/6739bd24e9daa85acab6cca3
